@@ -929,7 +929,65 @@ body {
 }
 
 
+/* ============================
+   PAY FOR CAMP BANNER
+   ============================ */
 
+.pay-banner {
+  width: 100%;
+  padding: 36px 20px;
+  background: linear-gradient(135deg, #1e7f4f, #2da56a);
+  text-align: center;
+}
+
+.pay-link {
+  display: inline-block;
+  font-size: 1.8em;
+  font-weight: 900;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 18px 40px;
+  border-radius: 60px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 3px solid rgba(255,255,255,0.4);
+  backdrop-filter: blur(6px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pay-link:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.3);
+}
+
+/* ============================
+   SUMMER SCHOLARSHIP BANNER
+   ============================ */
+
+.scholarship-banner {
+  width: 100%;
+  padding: 36px 20px;
+  background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+  text-align: center;
+}
+
+.scholarship-link {
+  display: inline-block;
+  font-size: 1.8em;
+  font-weight: 900;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 18px 40px;
+  border-radius: 60px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 3px solid rgba(255,255,255,0.4);
+  backdrop-filter: blur(6px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.scholarship-link:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.3);
+}
 
 </style>
 </head>
@@ -1008,7 +1066,27 @@ body {
 
 
 <div id="campContainer"></div>
+<section class="pay-banner">
+  <a
+    href="http://paypal.com/us/fundraiser/charity/1400928"
+    target="_blank"
+    rel="noopener"
+    class="pay-link"
+  >
+    Click here to pay for Camp
+  </a>
+</section>
 
+<section class="scholarship-banner">
+  <a
+    href="https://drive.google.com/file/d/1lAMF0mGpbBZBrF2gzWhrUIdrVldncr9E/view?usp=drive_link"
+    target="_blank"
+    rel="noopener"
+    class="scholarship-link"
+  >
+     Click here to apply for Summer Scholarships
+  </a>
+</section>
 <div class="staff-title">
   <span>Want to serve this summer?</span>
 </div>
@@ -1184,6 +1262,7 @@ for(let i=0;i<campWeeks.length;i+=2){
     </div>`;
   container.appendChild(stripe);
 }
+
 
 /* EXPAND */
 let open=null, timer=null;
