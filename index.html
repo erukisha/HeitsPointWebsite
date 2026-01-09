@@ -1265,22 +1265,31 @@ for(let i=0;i<campWeeks.length;i+=2){
 
 
 /* EXPAND */
-let open=null, timer=null;
+let open=null;
 function toggleWeek(i,row){
-  const existing=document.querySelector(".week-details");
-  if(existing){ existing.remove(); clearInterval(timer); if(open===i){open=null;return;} }
-  open=i;
+  const existing = document.querySelector(".week-details");
+
+if (existing) {
+  existing.remove();
+
+  // If clicking the same card, just close it
+  if (open === i) {
+    open = null;
+    return;
+  }
+}
+
+// If we get here, we're opening a NEW card
+open = i;
   const w=campWeeks[i];
   const sec=document.createElement("section");
   sec.className="week-details";
   sec.style.setProperty("--border",w.border);
   sec.style.setProperty("--stripe",w.stripe);
   sec.innerHTML=`
-    <div class="details-grid">
-      <div class="slideshow">
-       <div class="slide active"></div>
-      <div class="slide next"></div>
-      </div>
+              <div class="slideshow">
+            <div class="slide active" style="background-image:url('${w.photo}')"></div>
+          </div>
 
                 <div>
                   <h2 class="details-title">
@@ -1302,49 +1311,15 @@ function toggleWeek(i,row){
       </div>
     </div>`;
   document.querySelectorAll(".week-stripe")[row].after(sec);
-        let s = 1;
-
-        const slides = () => {
-          const active = document.querySelector(".slide.active");
-          const next = document.querySelector(".slide.next");
-          if (!active || !next) return;
-
-          // Set the next image and park it offscreen LEFT
-          next.style.transition = "none";
-          next.style.transform = "translateX(-100%)";
-          next.style.backgroundImage = `url('${w.folder}/${s}.png')`;
-
-          // Force layout so the browser commits the position
-          next.offsetHeight;
-
-          // Animate BOTH slides to the RIGHT
-          next.style.transition = "transform 0.8s ease";
-          active.style.transition = "transform 0.8s ease";
-
-          active.style.transform = "translateX(100%)";
-          next.style.transform = "translateX(0)";
-
-          // After animation, swap roles
-          setTimeout(() => {
-            active.classList.remove("active");
-            active.classList.add("next");
-
-            next.classList.remove("next");
-            next.classList.add("active");
-
-            active.style.transition = "";
-            active.style.transform = "translateX(-100%)";
-
-          }, 800);
-
-          s = s % 5 + 1;
-        };
-
-        slides();
-        timer = setInterval(slides, 8000);
-
-
-        setTimeout(()=>sec.scrollIntoView({behavior:"smooth",block:"nearest"}),120);
+  
+            requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              sec.scrollIntoView({
+                behavior: "smooth",
+                block: "end"
+              });
+            });
+          });
 }
 
 /* FADE IN */
