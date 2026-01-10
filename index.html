@@ -188,22 +188,32 @@ body {
    POLAROID EVIDENCE PHOTOS — FIXED
    ===================================== */
 
-.polaroid-wrapper {
-  position: absolute;
-  z-index: 4;
+/* ===== THEME GUTTER LAYOUT ===== */
+.theme-layout {
+  display: grid;
+  grid-template-columns: minmax(160px, 220px) minmax(0, 900px) minmax(160px, 220px);
+  gap: 32px;
+  align-items: start;
+  justify-content: center;
+}
+.theme-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
 }
 
-/* LEFT / CROSS */
-.polaroid-left {
-  top: 120px;
-  left: 30px;
+.theme-gutter {
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
 }
 
-/* RIGHT / CAMP */
-.polaroid-right {
-  bottom: 40px;
-  right: 40px;
+/* Polaroids now live INSIDE gutters */
+.theme-gutter .polaroid {
+  position: relative;
 }
+
 
 /* polaroid frame */
 .polaroid {
@@ -299,7 +309,15 @@ body {
   left: 62%;
 }
 
+@media (max-width: 900px) {
+  .theme-layout {
+    grid-template-columns: 1fr;
+  }
 
+  .theme-gutter {
+    margin-top: 30px;
+  }
+}
 
 @media (max-width: 768px) {
   .polaroid-wrapper {
@@ -349,6 +367,7 @@ body {
 }
 
 
+
 /* ===== WEEK STRIPES ===== */
 .week-stripe {
   padding: 90px 0;
@@ -366,6 +385,8 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 50px;
 }
+
+
 
 /* ===== CAMP CARD ===== */
 .camp-card {
@@ -989,6 +1010,56 @@ body {
   box-shadow: 0 16px 32px rgba(0,0,0,0.3);
 }
 
+/* ============================
+   ART CAMP / ALL CAMP SPLIT
+   ============================ */
+
+.dual-camp {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 28px;
+  margin-top: 20px;
+  align-items: start;
+}
+
+.camp-option {
+  background: rgba(255,255,255,0.9);
+  padding: 20px 22px;
+  border-radius: 16px;
+  border: 3px solid var(--border);
+}
+
+.camp-option h3 {
+  margin-top: 0;
+  font-size: 1.4em;
+  font-weight: 900;
+}
+
+.camp-or {
+  font-size: 2em;
+  font-weight: 900;
+  align-self: center;
+  opacity: 0.6;
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+  .dual-camp {
+    grid-template-columns: 1fr;
+  }
+
+  .camp-or {
+    text-align: center;
+    margin: 12px 0;
+  }
+}
+
+.option-price {
+  font-size: 1.3em;
+  font-weight: 900;
+  margin: 6px 0 12px;
+  color: #1e7f4f;
+}
 </style>
 </head>
 
@@ -1006,25 +1077,29 @@ body {
 <section class="theme-section">
   <div class="case-label">CASE #2026 — SEEK YE FIRST</div>
   <div class="case-divider"></div>
- <!-- LEFT POLAROID -->
-<div class="polaroid-wrapper polaroid-left">
-  <div class="polaroid">
-    <img src="cross.png" alt="Cross - Seek Ye First">
-    <div class="polaroid-caption">Key Evidence</div>
-  </div>
-</div>
+<div class="theme-layout">
 
-<!-- RIGHT POLAROID -->
-<div class="polaroid-wrapper polaroid-right">
-  <div class="polaroid">
-    <img src="camp.png" alt="Heit's Point Camp">
-    <div class="polaroid-caption">Camp Grounds</div>
+  <div class="theme-gutter left-gutter">
+    <div class="polaroid">
+      <img src="cross.png" alt="Cross - Seek Ye First">
+      <div class="polaroid-caption">Key Evidence</div>
+    </div>
   </div>
-</div>
 
-  <div class="theme-title">Summer Theme: “Seek Ye First”</div>
-  <div class="theme-verse" id="animatedVerse"></div>
-  <div class="theme-reference">Jeremiah 29:13</div>
+  <div class="theme-content">
+    <div class="theme-title">Summer Theme: “Seek Ye First”</div>
+    <div class="theme-verse" id="animatedVerse"></div>
+    <div class="theme-reference">Jeremiah 29:13</div>
+  </div>
+
+  <div class="theme-gutter right-gutter">
+    <div class="polaroid">
+      <img src="camp.png" alt="Heit's Point Camp">
+      <div class="polaroid-caption">Camp Grounds</div>
+    </div>
+  </div>
+
+</div>
 </div>
 
 </section>
@@ -1039,7 +1114,7 @@ body {
     </p>
 
     <p>
-      Most programs end on <strong>Friday mornings at 10:30</strong> with a
+      Most programs end on <strong>Friday mornings at 10:30</strong>(Discovery Week Varies) with a
       special program for family members!
     </p>
 
@@ -1153,7 +1228,7 @@ body {
         <ol>
           <li>Be wanting to help spread God's Love</li>
           <li>Be Willing to lead staff devotions!</li>
-          <li>If you are a Pastor, Leading out Wednesday Morning Service!</li>
+          <li>If you are a Pastor, Leading our Wednesday Morning Service!</li>
           <li>Email interest to HeitsPointSummerCamp@gmail.com</li>
         </ol>
       </div>
@@ -1190,7 +1265,7 @@ body {
       <li>🥾 OLD shoes and clothes that can get <strong>MUDDY</strong></li>
       <li>📷 Camera</li>
       <li>🔦 Flashlight</li>
-      <li>💊 Medications – give to the director at check-in (day-of-the-week sorter required; <strong>NOT allowed in cabins</strong>)</li>
+      <li>💊 Medications – give to the director at check-in (day-of-the-week sorter prefered; <strong>NOT allowed in cabins</strong>)</li>
     </ul>
 
     <div class="leave-box">
@@ -1214,7 +1289,7 @@ body {
 
 <script>
 /* THEME VERSE */
-const verse = "You will seek Me and find Me when you seek Me with all your heart.";
+const verse = "Seek God and find Him when you seek Him with all your heart.";
 const verseEl = document.getElementById("animatedVerse");
 verse.split(" ").forEach((w,i)=>{
   const s=document.createElement("span");
@@ -1225,14 +1300,23 @@ verse.split(" ").forEach((w,i)=>{
 
 /* CAMP DATA */
 const campWeeks=[
-{title:"🎨 Week 1 – Art Camp & ALL Camp",dates:"June 7–12", grades:"Grades: 3-9th",price:"$625",short:"Join us as we explore nature, creating beautiful art, and studying God's Word!",long:"Campers will learn a variety of art techniques while working on different crafts and creative projects to showcase at the art show during the closing program. Throughout the week, campers will explore the beauty of God’s creation and grow in their appreciation for all He has done—and continues to do—for us, alongside many other fun activities.",photo:"Week1Photo.png",folder:"Week1",pos:"center",stripe:"#fff4cc",border:"#e0b300"},
-{title:"👨‍👩‍👧‍👦 Week 2 – Family Camp",dates:"June 15–19", grades:"Grades: 3-9th",price:"$350/Adult + $100/Kid",short:"Enjoy a week with the family and learn about Family Discipleship w/ Pastor Todd Biermann and Concordia Center for the family! ",long:"Come enjoy a fun and meaningful experience at camp with your children while being equipped and inspired to grow in faith within your own family and strengthen the families you serve. Pastor Biermann will lead parents and church workers in Bible study and discipleship focused on faith at home, while children are cared for by our summer camp counselors. Families will also enjoy time together swimming, playing, worshiping, singing, and building lasting memories. Family pricing is $350 per adult and $100 per child, with children ages 2 and under attending free. Pricing includes a private hotel-style room or cabin, meals, Pastor Biermann, camp counselors and childcare, boating, swimming, fishing, disc golf, campfires, activities, and more. Lower-cost options are available for RV, bunkhouse, or tent camping, with RV stays at $250 per person and tent camping at $225 per person.",photo:"Week2Photo.png",folder:"Week2",pos:"center top",stripe:"#e6f4ff",border:"#4fa6ff",partner:true},
-{title:"🕳️ Week 3 – Caving Week",dates:"June 21–26", grades:"Grades: 6-9th",price:"$625",short:"Explore Jacob’s Caves with us as we learn about God and enjoy fun activities together.",long:"Join us for our new Caving Camp, where campers will embark on an exciting offsite adventure to explore Jacob’s Caverns during a guided cave crawl. Throughout the week, campers will grow in their faith as they explore God’s amazing Word, enjoy fun games, and take part in engaging activities designed to encourage learning, teamwork, and adventure. This unique camp experience blends hands-on exploration with faith-filled fun and unforgettable memories.",photo:"Week3Photo.png",folder:"Week3",pos:"center",stripe:"#e9fbf1",border:"#38c77b"},
-{title:"🧭 Week 4 – Discovery Week",dates:"June 28–30", grades:"Grades: K-3rd",price:"$250",short:"A smaller, adventure-filled mini week perfect for younger children who have never been to camp before!",long:"Created just for kids looking for a “small adventure,” this short week is perfect for Kindergarteners through 3rd graders! Campers will enjoy gentle adventures, fun activities, and meaningful moments learning about God’s love in a safe, encouraging camp environment. Parents or grandparents may stay on camp property by renting a hotel-style room or cabin, allowing young campers to explore, grow in confidence, and make joyful faith-filled memories—while family stays close by.",photo:"Week4Photo.png",folder:"Week4",pos:"center bottom",stripe:"#f2ecff",border:"#9d7cff"},
-{title:"🏀 Week 5 – Basketball Week",dates:"July 5–10", grades:"Grades: 3-9th",price:"$625",short:"Enjoy basketball? Want to build your skills? We show campers what it means to be a Christian athlete while strengthening both their basketball abilities and their faith!",long:"Our Basketball Camp is back with Coach Hawkeye! Campers will learn what it means to be a Christian athlete while fine-tuning existing basketball skills and developing new ones through focused instruction and teamwork. Throughout the week, campers will also enjoy engaging Bible studies, fun activities, and time spent experiencing the beauty of God’s creation, making this camp a well-rounded blend of faith, fitness, and fun.",photo:"Week5Photo.png",folder:"Week5",pos:"center",stripe:"#fff0f0",border:"#ff6b6b"},
+{title:"🎨 Week 1 – Art Camp & ALL Camp",dates:"June 7–12", grades:"Grades: 3rd-9th",price:"$575 Art Camp $550 All Camp",short:"Join us as we explore nature, creating beautiful art, and studying God's Word!",artCamp: {
+  title: "Art Camp",
+   price: "$575",
+  text: "Campers will learn a variety of art techniques while working on different crafts and creative projects to showcase at the art show during the closing program. Throughout the week, campers will explore the beauty of God’s creation and grow in their appreciation for all He has done—and continues to do—for us, alongside many other fun activities."
+},
+allCamp: {
+  title: "All Camp",
+  price: "$550",
+  text: "The All Camp option allows campers to enjoy traditional camp activities like swimming, games, worship, campfires, and outdoor adventures alongside other campers."
+},photo:"Week1Photo.png",folder:"Week1",pos:"center",stripe:"#fff4cc",border:"#e0b300"},
+{title:"👨‍👩‍👧‍👦 Week 2 – Family Camp w/ Concordia Center for the Family",dates:"June 15–19", grades:"Grades: 3-9th",price:"$350/Adult + $100/Kid",short:"Enjoy a week with the family and learn about Family Discipleship w/ Pastor Todd Biermann and Concordia Center for the family! ",long:"Come enjoy a fun and meaningful experience at camp with your children while being equipped and inspired to grow in faith within your own family and strengthen the families you serve. Pastor Biermann will lead parents and church workers in Bible study and discipleship focused on faith at home, while children are cared for by our summer camp counselors. Families will also enjoy time together swimming, playing, worshiping, singing, and building lasting memories. Family pricing is $350 per adult and $100 per child, with children ages 2 and under attending free. Pricing includes a private hotel-style room or cabin, meals, Pastor Biermann, camp counselors and childcare, boating, swimming, fishing, disc golf, campfires, activities, and more. Lower-cost options are available for RV, bunkhouse, or tent camping, with RV stays at $250 per adult and tent camping at $225 per adult.",photo:"Week2Photo.png",folder:"Week2",pos:"center top",stripe:"#e6f4ff",border:"#4fa6ff",partner:true},
+{title:"🕳️ Week 3 – Caving Week",dates:"June 21–26", grades:"Grades: 6-9th",price:"$575",short:"Explore Jacob’s Caves with us as we learn about God and enjoy fun activities together.",long:"Join us for our new Caving Camp, where campers will embark on an exciting offsite adventure to explore Jacob’s Caverns during a guided cave crawl. Throughout the week, campers will grow in their faith as they explore God’s amazing Word, enjoy fun games, and take part in engaging activities designed to encourage learning, teamwork, and adventure. This unique camp experience blends hands-on exploration with faith-filled fun and unforgettable memories.",photo:"Week3Photo.png",folder:"Week3",pos:"center",stripe:"#e9fbf1",border:"#38c77b"},
+{title:"🧭 Week 4 – Discovery Week",dates:"June 28–30", grades:"Grades: K-4th",price:"$250",short:"A smaller, adventure-filled mini week perfect for younger children who have never been to camp before!",long:"Created just for kids looking for a “small adventure,” this short week is perfect for Kindergarteners through 3rd graders! Campers will enjoy gentle adventures, fun activities, and meaningful moments learning about God’s love in a safe, encouraging camp environment. Parents or grandparents may stay on camp property by renting a hotel-style room or cabin, allowing young campers to explore, grow in confidence, and make joyful faith-filled memories—while family stays close by.",photo:"Week4Photo.png",folder:"Week4",pos:"center bottom",stripe:"#f2ecff",border:"#9d7cff"},
+{title:"🏀 Week 5 – Basketball Week",dates:"July 5–10", grades:"Grades: 3rd-9th",price:"$575",short:"Enjoy basketball? Want to build your skills? We show campers what it means to be a Christian athlete while strengthening both their basketball abilities and their faith!",long:"Our Basketball Camp is back with Coach Hawkeye! Campers will learn what it means to be a Christian athlete while fine-tuning existing basketball skills and developing new ones through focused instruction and teamwork. Throughout the week, campers will also enjoy engaging Bible studies, fun activities, and time spent experiencing the beauty of God’s creation, making this camp a well-rounded blend of faith, fitness, and fun.",photo:"Week5Photo.png",folder:"Week5",pos:"center",stripe:"#fff0f0",border:"#ff6b6b"},
 {title:"🛠️ Week 6 – Servant Event",dates:"July 12–17", grades:"Middle school and High schoolers",price:"$350",short:"Middle and high schoolers—join us and DCE Daniel Meyer (and his new church) to paint, rebuild, and serve the Lincoln or Warsaw community with other young people who love God and serving others!",long:"Join us and DCE Daniel Meyer (and his new church) as we paint around the camp, rebuild areas in need of tender loving care, and serve members of the Lincoln or Warsaw community. Campers will work alongside other young people who love God and have a heart for serving others, growing in faith while making a meaningful impact.",photo:"Week6Photo.png",folder:"Week6",pos:"center",stripe:"#eefaf0",border:"#4caf50"},
-{title:"💦 Week 7 – Water Week",dates:"July 19–24", grades:"Grades: 3-9th",price:"$625",short:"Love the water? Love God? Join us for Water Week—packed with fun water activities and a trip to Big Splash!",long:"Let’s make a splash—one of our favorite weeks is back! Join us for an action-packed, water-filled week featuring an exciting offsite trip to Big Splash. Campers will enjoy a variety of fun water activities alongside engaging games, meaningful Bible studies, and plenty of time for fellowship and laughter. This week is the perfect blend of summer fun, faith growth, and unforgettable memories at camp.",photo:"Week7Photo.png",folder:"Week7",pos:"center top",stripe:"#e6f9ff",border:"#00bcd4"},
-{title:"👨‍👩‍👧‍👦 Family Camp #2",dates:"Aug 2–7", grades:"",price:"$350/Adult + $100/Kid",short:"Spend a week at camp with your family, featuring Bible studies with Pastor Perling, fun activities, and so much more!",long:"Come enjoy a fun and meaningful experience at camp with your children while growing together in faith and strengthening your family. Pastor Perling will lead families in engaging Bible study and faith-focused teaching, while children are cared for by our summer camp counselors. Families will also enjoy time together swimming, playing, worshiping, singing, and building lasting memories. Family pricing is $350 per adult and $100 per child, with children ages 2 and under attending free. Pricing includes a private hotel-style room or cabin, meals, Pastor Perling, camp counselors and childcare, boating, swimming, fishing, disc golf, campfires, activities, and more. Lower-cost options are available for RV, bunkhouse, or tent camping, with RV stays at $250 per person and tent camping at $225 per person.",photo:"Week8Photo.png",folder:"Week8",pos:"center",stripe:"#fff6e6",border:"#ffa726"}
+{title:"💦 Week 7 – Water Week",dates:"July 19–24", grades:"Grades: 3rd-9th",price:"$575",short:"Love the water? Love God? Join us for Water Week—packed with fun water activities and a trip to Super Splash!",long:"Let’s make a splash—one of our favorite weeks is back! Join us for an action-packed, water-filled week featuring an exciting offsite trip to Super Splash. Campers will enjoy a variety of fun water activities alongside engaging games, meaningful Bible studies, and plenty of time for fellowship and laughter. This week is the perfect blend of summer fun, faith growth, and unforgettable memories at camp.",photo:"Week7Photo.png",folder:"Week7",pos:"center top",stripe:"#e6f9ff",border:"#00bcd4"},
+{title:"👨‍👩‍👧‍👦 Family Camp #2",dates:"Aug 2–7", grades:"",price:"$350/Adult + $100/Kid",short:"Spend a week at camp with your family, featuring Bible studies with Pastor Perling, fun activities, and so much more!",long:"Come enjoy a fun and meaningful experience at camp with your children while growing together in faith and strengthening your family. Pastor Perling will lead families in engaging Bible study and faith-focused teaching, while children are cared for by our summer camp counselors. Families will also enjoy time together swimming, playing, worshiping, singing, and building lasting memories. Family pricing is $350 per adult and $100 per child, with children ages 2 and under attending free. Pricing includes a private hotel-style room or cabin, meals, Pastor Perling, camp counselors and childcare, boating, swimming, fishing, disc golf, campfires, activities, and more. Lower-cost options are available for RV, bunkhouse, or tent camping, with RV stays at $250 per adult and tent camping at $225 per adult.",photo:"Week8Photo.png",folder:"Week8",pos:"center",stripe:"#fff6e6",border:"#ffa726"}
 ];
 
 const container=document.getElementById("campContainer");
@@ -1305,7 +1389,24 @@ open = i;
             <span class="details-grades">${w.grades}</span>
           </div>
 
-        <p>${w.long}</p>
+        ${
+      w.artCamp && w.allCamp
+        ? `
+          <div class="camp-option">
+  <h3>${w.artCamp.title}</h3>
+  <div class="option-price">${w.artCamp.price}</div>
+  <p>${w.artCamp.text}</p>
+</div>
+
+        <div class="camp-or">OR</div>
+
+        <div class="camp-option">
+          <h3>${w.allCamp.title}</h3>
+          <div class="option-price">${w.allCamp.price}</div>
+          <p>${w.allCamp.text}</p>
+        </div>`
+        : `<p>${w.long}</p>`
+        }
 
         <a class="register-btn" href="https://forms.gle/ce9UvyG86crXzrrS8" target="_blank">Register Now</a>
       </div>
