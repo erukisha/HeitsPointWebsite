@@ -853,6 +853,65 @@ body {
   
 }
 
+/* ===== ART vs ALL CAMP CHOICE ===== */
+
+.choice-wrapper {
+  margin-top: 24px;
+}
+
+.choice-title {
+  text-align: center;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 900;
+  color: #c40000; /* strong camp red */
+  margin: 10px 0 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+
+}
+
+.dual-camp {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.camp-or {
+  align-self: center;
+  font-size: 2.2em;
+  font-weight: 900;
+  opacity: 0.6;
+}
+
+.camp-option {
+  background: rgba(255,255,255,0.95);
+  border: 3px solid var(--border);
+  border-radius: 18px;
+  padding: 20px 22px;
+}
+
+.option-price {
+  font-size: 1.3em;
+  font-weight: 900;
+  margin: 6px 0 12px;
+  color: var(--border);
+}
+
+/* Mobile stacking */
+@media (max-width: 900px) {
+  .dual-camp {
+    grid-template-columns: 1fr;
+  }
+
+  .camp-or {
+    text-align: center;
+    margin: 12px 0;
+  }
+}
+
+
 /* ============================
    WHAT TO BRING — FINAL THEME
    ============================ */
@@ -869,6 +928,11 @@ body {
   margin-bottom: 12px;
 }
 
+.what-to-bring-outer {
+  width: 100%;
+}
+
+
 .bring-intro {
   text-align: center;
   font-size: 1.1em;
@@ -877,12 +941,36 @@ body {
   opacity: 0.9;
 }
 
-.bring-grid {
-  max-width: 1150px;
+.what-to-bring h2,
+.bring-intro {
+  text-align: center;
+}
+
+.what-to-bring-inner {
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 0 16px;
+}
+.what-to-bring-inner h2 {
+  text-align: center;
+}
+.bring-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 32px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 24px;
+
+  align-items: start; /* ⬅️ IMPORTANT */
+}
+
+@media (max-width: 800px) {
+  .bring-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* WHAT TO BRING BOX */
@@ -911,6 +999,8 @@ body {
   line-height: 1.45;
 }
 
+
+
 /* DON'T BRING — RED WARNING BOX */
 .leave-box {
   background: #ffeaea;
@@ -937,6 +1027,16 @@ body {
   font-size: 1.05em;
 }
 
+.bring-box {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.what-to-bring h2,
+.bring-intro {
+  text-align: center;
+}
+
 /* Mobile */
 @media (max-width: 900px) {
   .bring-grid {
@@ -949,7 +1049,42 @@ body {
   }
 }
 
+.med-box {
+  background: #fff8f0;
+  border-radius: 22px;
+  padding: 20px;
+  border: 3px dashed #c0392b;
+  text-align: center;
+}
 
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.med-box h3 {
+  margin-top: 0;
+  font-size: 1.3em;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.med-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.med-box a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.med-caption {
+  font-size: 0.95em;
+  opacity: 0.85;
+}
 /* ============================
    PAY FOR CAMP BANNER
    ============================ */
@@ -1237,17 +1372,18 @@ body {
 </section>
 
 
-<section class="what-to-bring">
+<section class="what-to-bring-outer">
+  <div class="what-to-bring-inner">
   <h2>🧳 What to Bring to Camp</h2>
 
   <p class="bring-intro">
     Please make sure you bring the following items:
   </p>
-
   <div class="bring-grid">
-    <div class="bring-box">
-      <h3 class="bring-title">✅ What to Bring</h3>
-      <ul class="bring-list">
+
+  <div class="bring-box">
+    <h3 class="bring-title">✅ What to Bring</h3>
+    <ul class="bring-list">
       <li>📖 Bible</li>
       <li>😄 <strong>GOOD attitude!!</strong></li>
       <li>👖 Long pants</li>
@@ -1265,21 +1401,40 @@ body {
       <li>🥾 OLD shoes and clothes that can get <strong>MUDDY</strong></li>
       <li>📷 Camera</li>
       <li>🔦 Flashlight</li>
-      <li>💊 Medications – give to the director at check-in (day-of-the-week sorter prefered; <strong>NOT allowed in cabins</strong>)</li>
+      <li>💊 Medications – give to the director at check-in (day-of-the-week sorter preferred; <strong>NOT allowed in cabins</strong>)</li>
     </ul>
+  </div>
+  <div class="right-column">
 
-    <div class="leave-box">
-      <h3>🚫 What to Leave at Home</h3>
-      <ul>
-        <li>🍪 Snacks (we have a great cook — and no critters in cabins!)</li>
-        <li>🎆 Fireworks</li>
-        <li>📱 Cell phones and electronic devices</li>
-        <li>💍 Jewelry or expensive toys, pens, etc.</li>
-        <li>🔪 Weapons — including pocket knives</li>
-        <li>💦 Squirt guns</li>
-        <li>🐶 Pets</li>
-      </ul>
-    </div>
+  <div class="leave-box">
+    <h3>🚫 What to Leave at Home</h3>
+    <ul>
+      <li>🍪 Snacks (we have a great cook — and no critters in cabins!)</li>
+      <li>🎆 Fireworks</li>
+      <li>📱 Cell phones and electronic devices</li>
+      <li>💍 Jewelry or expensive toys, pens, etc.</li>
+      <li>🔪 Weapons — including pocket knives</li>
+      <li>💦 Squirt guns</li>
+      <li>🐶 Pets</li>
+    </ul>
+  </div>
+
+<div class="med-box">
+  <h3>💊 Medicine Box Example</h3>
+
+  <a href="https://www.amazon.com/Amazon-Basic-Care-Organizer-Neutral/dp/B0BFRTM2R5/ref=sr_1_1_ffob_sspa?rdc=1&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY"
+     target="_blank"
+     rel="noopener">
+     
+    <img src="MedBox.png" alt="Medication organizer example">
+    <p class="med-caption">Click to view an example of an acceptable medication organizer</p>
+  </a>
+</div>
+</div>
+
+</div>
+
+  
   </div>
 </section>
 
@@ -1308,7 +1463,7 @@ const campWeeks=[
 allCamp: {
   title: "All Camp",
   price: "$550",
-  text: "The All Camp option allows campers to enjoy traditional camp activities like swimming, games, worship, campfires, and outdoor adventures alongside other campers."
+  text: "The All Camp option offers campers a full, well-rounded camp experience that includes all the best traditions of Heit’s Point. Campers will spend their days swimming at the lake, playing organized games, participating in worship and Bible studies, gathering around campfires, and enjoying a variety of outdoor adventures.\n\nThis option is ideal for campers who want a classic summer camp experience centered on faith, friendship, and fun. "
 },photo:"Week1Photo.png",folder:"Week1",pos:"center",stripe:"#fff4cc",border:"#e0b300"},
 {title:"👨‍👩‍👧‍👦 Week 2 – Family Camp w/ Concordia Center for the Family",dates:"June 15–19", grades:"Grades: 3-9th",price:"$350/Adult + $100/Kid",short:"Enjoy a week with the family and learn about Family Discipleship w/ Pastor Todd Biermann and Concordia Center for the family! ",long:"Come enjoy a fun and meaningful experience at camp with your children while being equipped and inspired to grow in faith within your own family and strengthen the families you serve. Pastor Biermann will lead parents and church workers in Bible study and discipleship focused on faith at home, while children are cared for by our summer camp counselors. Families will also enjoy time together swimming, playing, worshiping, singing, and building lasting memories. Family pricing is $350 per adult and $100 per child, with children ages 2 and under attending free. Pricing includes a private hotel-style room or cabin, meals, Pastor Biermann, camp counselors and childcare, boating, swimming, fishing, disc golf, campfires, activities, and more. Lower-cost options are available for RV, bunkhouse, or tent camping, with RV stays at $250 per adult and tent camping at $225 per adult.",photo:"Week2Photo.png",folder:"Week2",pos:"center top",stripe:"#e6f4ff",border:"#4fa6ff",partner:true},
 {title:"🕳️ Week 3 – Caving Week",dates:"June 21–26", grades:"Grades: 6-9th",price:"$575",short:"Explore Jacob’s Caves with us as we learn about God and enjoy fun activities together.",long:"Join us for our new Caving Camp, where campers will embark on an exciting offsite adventure to explore Jacob’s Caverns during a guided cave crawl. Throughout the week, campers will grow in their faith as they explore God’s amazing Word, enjoy fun games, and take part in engaging activities designed to encourage learning, teamwork, and adventure. This unique camp experience blends hands-on exploration with faith-filled fun and unforgettable memories.",photo:"Week3Photo.png",folder:"Week3",pos:"center",stripe:"#e9fbf1",border:"#38c77b"},
@@ -1392,19 +1547,28 @@ open = i;
         ${
       w.artCamp && w.allCamp
         ? `
-          <div class="camp-option">
-  <h3>${w.artCamp.title}</h3>
-  <div class="option-price">${w.artCamp.price}</div>
-  <p>${w.artCamp.text}</p>
-</div>
+            <div class="choice-wrapper">
 
-        <div class="camp-or">OR</div>
+  <div class="choice-title">YOUR CHOICE!</div>
 
-        <div class="camp-option">
-          <h3>${w.allCamp.title}</h3>
-          <div class="option-price">${w.allCamp.price}</div>
-          <p>${w.allCamp.text}</p>
-        </div>`
+            <div class="dual-camp">
+              <div class="camp-option">
+                <h3>${w.artCamp.title}</h3>
+                <div class="option-price">${w.artCamp.price}</div>
+                <p>${w.artCamp.text}</p>
+              </div>
+
+              <div class="camp-or">OR</div>
+
+              <div class="camp-option">
+                <h3>${w.allCamp.title}</h3>
+                <div class="option-price">${w.allCamp.price}</div>
+                <p>${w.allCamp.text}</p>
+              </div>
+            </div>
+
+    </div>`
+
         : `<p>${w.long}</p>`
         }
 
